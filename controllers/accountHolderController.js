@@ -6,7 +6,7 @@ import { transectionModel } from "../models/transectionModel.js";
 const getAllAccount=async(req, res)=>{
     try{
         const data= await accountHolderModel.find({});
-        if(!data){
+        if(data.length<1){
             return res.status(403).send({sueccss: false, message:"account not found!"});
         }
         return res.status(200).send({sueccss: true, message:"All account has fetched!",data});
@@ -52,7 +52,6 @@ const createNewAccount=async(req, res)=>{
         const data= await newAccount.save();
         return res.send({success: true, message:"Account created successfully!",data});
     }catch(err){
-        console.log(err)
         return res.status(500).send({sueccss: false, message:"something went wrong!"});
     }
 }
@@ -88,7 +87,6 @@ const updateAccount= async(req, res)=>{
 
         res.status(200).send({success: true, message:"account is updated!", data});
     }catch(err){
-        console.log(err);
         return res.status(500).send({sueccss: false, message:"something went wrong!"});
     }
 }
@@ -237,7 +235,6 @@ const getTransections=async(req, res)=>{
         let data=user.transection;
         return res.status(200).send({success: true, message:"transection is fetched successfully!", data});
     }catch(err){
-        console.log(err)
         return res.status(500).send({sueccss: false, message:"something went wrong!"});
     }
 }

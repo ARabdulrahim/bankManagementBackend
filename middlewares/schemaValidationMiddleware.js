@@ -9,7 +9,7 @@ const accountHolderSchemaValidationMiddelware=(req, res, next)=>{
             next();
         }
     }catch(err){
-
+        
     }
 }
 
