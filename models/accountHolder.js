@@ -11,6 +11,10 @@ const accountHolderSchema=new mongoose.Schema({
         unique: true,
         require: true,
     },
+    email:{
+        type: String,
+        require: true
+    },
     phone:{
         type : Number,
         require: true,

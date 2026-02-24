@@ -32,7 +32,7 @@ const getAccountById= async(req, res)=>{
 //create new account
 const createNewAccount=async(req, res)=>{
     try{
-        const{username, aadhar, phone, gender, dob,address, account}=req.body;
+        const{username, email, aadhar, phone, gender, dob,address, account}=req.body;
         const user=await accountHolderModel.findOne({aadhar});
         if(user){
             return res.status(400).send({success: false, message: "user account allready created!"});
@@ -48,7 +48,7 @@ const createNewAccount=async(req, res)=>{
                 }
             }
         }
-        const newAccount=new accountHolderModel({username, aadhar, phone, dob, gender, address, account});
+        const newAccount=new accountHolderModel({username, aadhar, email, phone, dob, gender, address, account});
         const data= await newAccount.save();
         return res.send({success: true, message:"Account created successfully!",data});
     }catch(err){
