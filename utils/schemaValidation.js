@@ -3,6 +3,7 @@ import Joi from 'joi';
 const accountHolderValidationSchema = Joi.object({
     username: Joi.string().required(),
     aadhar: Joi.number().required().min(100000000000).max(999999999999), 
+    email: Joi.string(),
     phone: Joi.number().required().min(1000000000).max(9999999999), 
     dob: Joi.date().required(),
     gender: Joi.string().valid('male', 'female', 'other').required(),
